@@ -11,14 +11,16 @@ if($db->connect_errno <> 0){
     echo $db -> connect_error;
 }
 
-$sql = "select * from msg";
+$sql = "select * from msg where id > 34";
 $mysql_result = $db->query($sql);
 
-var_dump($mysql_result->fetch_array(MYSQLI_ASSOC));
+// var_dump($mysql_result->fetch_array(MYSQLI_ASSOC));
 
+$arr = [];
 while($row = $mysql_result->fetch_array(MYSQLI_ASSOC)){
-    var_dump($row);
+    $arr[$row['id']] = $row;    
 }
+var_dump($arr)
 
 // $sql = "insert into msg (content,user,intime) value ('这是php中插入数据','吴',21312321321)";
 // $is = $db -> query($sql);
